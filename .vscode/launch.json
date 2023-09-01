@@ -1,0 +1,61 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "gdb",
+      "request": "attach",
+      "name": "Attach to gdbserver",
+      "executable": "/home/esp/build/sim-qemu.elf",
+      "target": ":1234",
+      "remote": true,
+      "cwd": "${workspaceRoot}",
+      "valuesFormatting": "parseText"
+    },
+    {
+      "name": "(gdb) Pipe Attach",
+      "type": "cppdbg",
+      "request": "attach",
+      "program": "/home/esp/build/sim-qemu.elf",
+      "processId": "${command:pickRemoteProcess}",
+      "pipeTransport": {
+        "debuggerPath": "/opt/esp/tools/xtensa-esp-elf-gdb/12.1_20221002/xtensa-esp-elf-gdb/bin/xtensa-esp32-elf-gdb",
+        "pipeProgram": "docker.exe",
+        "pipeArgs": [
+          "exec",
+          "-i",
+          "8556490d304947a29ca3b5444f487552844f84c46ef2d0258547c74f5f9b4241",
+          "sh",
+          "-c"
+        ],
+        "pipeCwd": "${workspaceRoot}"
+      },
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    },
+
+    {
+      "type": "gdb",
+      "gdbpath": "C:/esp/tools/tools/xtensa-esp-elf-gdb/11.2_20220823/xtensa-esp-elf-gdb/bin/xtensa-esp32-elf-gdb.exe",
+      "request": "attach",
+      "name": "Attach to qemu",
+
+      "executable": "./build/sim-qemu.elf",
+      "target": ":1234",
+      "remote": true,
+      "cwd": "./",
+      "valuesFormatting": "parseText"
+    },
+
+    {
+      "type": "espidf",
+      "name": "Launch",
+      "request": "launch"
+    }
+  ]
+}
