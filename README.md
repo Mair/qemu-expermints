@@ -1,11 +1,3 @@
-# config settings
-
-- Serial flasher config -> flash size : 4MB
-- Example Connection Configuration ->
-  - Disable : connect using Wifi interface
-  - Enable : connect using Ethernet interface
-    - Ethernet type: OpenCores Ethernet Mac (EXPERIMENTAL)
-
 # general flow
 
 You need to be in the ./devcontainer dir with:
@@ -22,6 +14,18 @@ docker build -t esp-qemu:5 .
 ```bash
 docker run -it -p 8000:8000 -v C:\projects\spike\sim\sim-qemu:/home/esp esp-qemu:5 /bin/bash
 ```
+
+## from within the container
+
+The following was set with `idf.py menuconfig` (from within the container)
+
+### config settings
+
+- Serial flasher config -> flash size : 4MB
+- Example Connection Configuration ->
+  - Disable : connect using Wifi interface
+  - Enable : connect using Ethernet interface
+    - Ethernet type: OpenCores Ethernet Mac (EXPERIMENTAL)
 
 3. these commands can be run within the interactive shell
 
